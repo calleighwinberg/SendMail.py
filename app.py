@@ -27,6 +27,7 @@ def getMarsPhoto(sol):
 
 
 '''
+this method sends the email
 '''
 def sendEmail(fromEmail, toEmail, subject, img_url):
     mail = Mail(fromEmail, toEmail, subject, html_content='<strong>Check out this Mars pic</strong><br>'f'<img src="{img_url}"></img>')
@@ -39,7 +40,7 @@ def sendEmail(fromEmail, toEmail, subject, img_url):
     print(response.status_code)
     print(response.headers)
 
-
+#these are the params that can be changed. Maybe put in a different file
 fromEmail = "calleigh@seas.upenn.edu"  # Change to your verified sender
 toEmail = "calleighwinberg@gmail.com"  # Change to your recipient
 subject = "Daily Mars Photo"
