@@ -4,7 +4,7 @@ import sendgrid
 from sendgrid.helpers.mail import Mail, Email, To, Content
 import os
 import ssl
-ssl._create_default_https_context = ssl._create_stdlib_context
+ssl._create_default_https_context = ssl._create_stdlib_context #not sure what this line does but it was needed
 
 sg = sendgrid.SendGridAPIClient(api_key='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')
 
@@ -48,3 +48,5 @@ img_url = getMarsPhoto('1000')
 #content = '<strong>Check out this Mars pic</strong><br>'f'<img src="{img_url}"></img>')
 
 sendEmail(fromEmail, toEmail, subject, img_url)
+
+#making new  change here
