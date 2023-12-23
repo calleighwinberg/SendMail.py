@@ -23,6 +23,8 @@ def getMarsPhoto(sol):
 
     photoHTML = random.choice(photos)['img_src']
 
+    print(photoHTML)
+
     return photoHTML
 
 
