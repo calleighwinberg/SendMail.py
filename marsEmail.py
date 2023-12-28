@@ -4,16 +4,41 @@ import sendgrid
 from sendgrid.helpers.mail import Mail
 import os
 
-#ssl library and command needed to disable verification for individual connections
-import ssl
-ssl._create_default_https_context = ssl._create_stdlib_context #not sure what this line does but it was needed
+#sg = sendgrid.SendGridAPIClient(os.environ.get('SENDGRID_API_PY'))
+sg = sendgrid.SendGridAPIClient('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')
 
-sg = sendgrid.SendGridAPIClient(os.environ.get('SENDGRID_API_PY'))
-#sg = sendgrid.SendGridAPIClient('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')
+#apiNASA = os.environ.get('NASA_API')
+apiNASA = '2vgBDamI9RzdXai3bjYyNMdUQKHmkQlgcajHhC5W'
 
-apiNASA = os.environ.get('NASA_API')
+urlNASAapod = 'https://api.nasa.gov/planetary/apod'
 
 urlNASA = 'https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos'
+
+
+def getPhotoOfDay(date):
+
+    params = {'date': date, 'api_key': apiNASA}
+    response = requests.get(urlNASAapod, params)
+    #print(response.status_code)
+    if (response.status_code != 200):
+        print("Error")
+        print(response.text)
+        return response.text
+
+    data = response.json()
+    photo = data['url']
+    title = data['title']
+    explanation = data['explanation']
+    print(photo)
+    print(title)
+    print(explanation)
+
+    return photo, title, explanation
+
+a, b, c = getPhotoOfDay('2023-12-12')
+print(a)
+print(b)
+print(c)
 
 def getMarsPhoto(sol):
 
@@ -21,7 +46,7 @@ def getMarsPhoto(sol):
     response = requests.get(urlNASA, params)
     if (response.status_code != 200):
         print("Error")
-        return []
+        return response.text
 
     data = response.json()
     photos = data['photos']
