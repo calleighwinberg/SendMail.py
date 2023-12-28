@@ -1,6 +1,6 @@
 import streamlit as st
 
-from app import *
+from marsEmail import *
 
 st.write("hello world")
 
