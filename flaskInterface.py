@@ -1,6 +1,6 @@
 from flask import Flask, request
 import re
-from marsEmail import getMarsPhoto, sendEmail
+from marsEmail import get_mars_photo, send_email
 
 #create flask app object
 app = Flask(__name__)
@@ -21,14 +21,14 @@ def emailResponse():
         solDayInt = int(solDay)
         if (solDayInt > 4000):
             solDay = '1000'
-        img_url = getMarsPhoto(solDay)
+        img_url = get_mars_photo(solDay)
     except:
-        img_url = getMarsPhoto('1000')
+        img_url = get_mars_photo('1000')
         #solDay = '1000'
 
     #img_url = getMarsPhoto(solDay)
 
-    sendEmail(toEmail, fromEmail, img_url)
+    send_email(toEmail, fromEmail, img_url)
 
     #we need to return a 200 status code because sendgrid has retry logic
     return '', 200

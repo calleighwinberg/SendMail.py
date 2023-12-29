@@ -15,43 +15,26 @@ with st.sidebar:
              'at NASA\'s Goddard Space Flight Center launched a website with a simple aim – to post a daily astronomical'
              ' image to raise awareness of astronomy and space science.')
 
-    #today = datetime.datetime.now()
 
     date = st.date_input('Select a Date', value=datetime.date(2023, 12, 12), min_value=datetime.date(1995, 6, 16),
                          max_value=datetime.datetime.now(), format="YYYY-MM-DD", label_visibility='visible')
 
     st.title('Interested in exploring closer to home?')
     st.write('Send an email to "mars@calleighwinberg.courses" to receive back a random photo from NASA\'s Mars Curiosity '
-             'Rover. Include a \'sol\' date (0-4000) in the body of your email to receive a photo taken on the specifc Martian '
-             'sol after Curiosity landed.')
+             'Rover. Include a \'sol\' date (0-4000) in the body of your email to receive a photo taken on the specific Martian '
+             'sol counting from when Curiosity landed.')
+
 
 with st.container():
-    #date = st.date_input('Select a Date', value=datetime.date(2023, 12, 12), min_value=datetime.date(1995, 6, 16),
-                         #max_value=None, format="YYYY-MM-DD", label_visibility='visible')
-
     try:
-        apodHTTP, title, explanation = getPhotoOfDay(date)
-        st.subheader(title + " - " + str(date), divider='blue')
-        # st.write(date)
+        lst = get_photo_of_day(date)
+        st.subheader(lst[1] + " - " + str(date), divider='blue')
 
-        # col1, col2 = st.columns(2, gap='small')
+        if lst[3] == 'image':
+            st.image(lst[0], width=None, use_column_width='always')
+        else:
+            st.video(lst[0])
 
-        # with col1:
-        st.image(apodHTTP, width=None, use_column_width='always')
-
-        # with col2:
-        st.write(explanation)
+        st.write(lst[2])
     except:
         st.write("oh no! There's no picture for the day selected!")
-
-
-
-
-photoHTML = getMarsPhoto(1000)
-
-#st.image(photoHTML, width = 400)
-
-st.button("New Mars Photo", type="primary")
-
-if st.button:
-    st.image(photoHTML, width = 400)
