@@ -17,15 +17,15 @@ def emailResponse():
     #error checking will grab the first occurence of a number in the users email. If the number is above 4000, interface
     #will use 1000 instead. Sol days are limited above 4000
     try:
-        solDay = re.search('\d+', emailContent).group()
-        img_url = get_mars_photo(solDay)
+        sol_day = re.search('\d+', emailContent).group()
+        img_url, sol_day = get_mars_photo(sol_day)
     except:
-        img_url = get_mars_photo('1000')
+        img_url, sol_day = get_mars_photo('1000')
         #solDay = '1000'
 
     #img_url = getMarsPhoto(solDay)
 
-    send_email(toEmail, fromEmail, img_url)
+    send_email(toEmail, fromEmail, img_url, sol_day)
 
     #we need to return a 200 status code because sendgrid has retry logic
     return '', 200

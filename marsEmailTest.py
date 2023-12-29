@@ -35,5 +35,20 @@ class MyTestCase(unittest.TestCase):
         self.assertTrue('http://mars.jpl.nasa.gov/msl-raw-images/msss/01000/' in get_mars_photo('100001'))
 
 
+    def test_send_email(self):
+
+        #test that given valid parameters, a 202 status code is returned
+        self.assertEqual(202, send_email('mars@calleighwinberg.courses', 'calleighwinberg@gmail.com',
+                                         'http://mars.jpl.nasa.gov/msl-raw-images/msss/01000/mcam/1000MR0044630030503563C00_DXXX.jpg', '1000'))
+
+        #test that sending from an unverified sender will return an error
+        self.assertEqual('error', send_email('x@gmail.com', 'y@gmail.com',
+                                         'z', '1000'))
+
+        # test that sending from an unverified sender will return an error
+        self.assertEqual('error', send_email('x@gmail.com', 'y@gmail.com',
+                                             'z', '1000'))
+
+
 if __name__ == '__main__':
     unittest.main()

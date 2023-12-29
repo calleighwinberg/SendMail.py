@@ -68,34 +68,43 @@ def get_mars_photo(sol):
     #print(photos)
     photoHTML = random.choice(photos)['img_src']
 
-    print(photoHTML)
+    #print(photoHTML)
 
-    return photoHTML
+    return photoHTML, sol
 
 
 '''
 this method sends the email
 '''
-def send_email(fromEmail, toEmail, img_url):
+def send_email(fromEmail, toEmail, img_url, sol_day):
     mail = Mail(fromEmail, toEmail, subject="Here is your Mars Rover Photo!",
-                html_content='<strong>Check out this Mars pic</strong><br>'f'<img src="{img_url}"></img>')
+                html_content='<strong>Check out this Mars picture from Curiosity\'s 'f'{sol_day} exploring Mars. </strong> <br> <img src="{img_url}"></img>')
 
-    # Get a JSON-ready representation of the Mail object
-    mailJSON = mail.get()
+    try:
+        # Get a JSON-ready representation of the Mail object
+        mailJSON = mail.get()
 
-    # Send an HTTP POST request to /mail/send
-    response = sg.client.mail.send.post(request_body=mailJSON)
-    print(response.status_code)
-    print(response.headers)
+        # Send an HTTP POST request to mail.send.post
+        response = sg.client.mail.send.post(request_body=mailJSON)
+        print(response.status_code)
+        print(response.headers)
+        return response.status_code
+
+    except Exception:
+        #print(response.status_code)
+        return 'error'
+
+
 
 #these are the params that can be changed. Maybe put in a different file
-fromEmail = "calleigh@seas.upenn.edu"
+fromEmail = "mars@calleighwinberg.courses"
 toEmail = "calleighwinberg@gmail.com"
 #subject = "Here is your Mars Rover Photo!"
-img_url = get_mars_photo('4100')
-print(type(img_url))
+img_url, sol = get_mars_photo('2344')
+#print(img_url)
 #content = '<strong>Check out this Mars pic</strong><br>'f'<img src="{img_url}"></img>')
 
-#send_email(fromEmail, toEmail, img_url)
+send_email(fromEmail, toEmail, img_url, sol)
+
 
 #making new  change here
