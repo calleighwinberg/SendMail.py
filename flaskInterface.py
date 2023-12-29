@@ -18,9 +18,6 @@ def emailResponse():
     #will use 1000 instead. Sol days are limited above 4000
     try:
         solDay = re.search('\d+', emailContent).group()
-        solDayInt = int(solDay)
-        if (solDayInt > 4000):
-            solDay = '1000'
         img_url = get_mars_photo(solDay)
     except:
         img_url = get_mars_photo('1000')

@@ -41,6 +41,10 @@ def get_photo_of_day(date):
 
 def get_mars_photo(sol):
 
+    sol_int = int(sol)
+    if (sol_int > 4000):
+        sol = '1000'
+
     sol_picture = False
 
     while not sol_picture:
@@ -55,9 +59,9 @@ def get_mars_photo(sol):
         #print(photos)
         #error checking for the given sol. Sometimes a camera is inactive for a few days so there are no photos.
         if len(photos) == 0:
-            int_sol = int(sol)
-            int_sol +=1
-            sol = str(int_sol)
+            sol_int = int(sol)
+            sol_int +=1
+            sol = str(sol_int)
         else:
             sol_picture = True
 
@@ -88,7 +92,7 @@ def send_email(fromEmail, toEmail, img_url):
 fromEmail = "calleigh@seas.upenn.edu"
 toEmail = "calleighwinberg@gmail.com"
 #subject = "Here is your Mars Rover Photo!"
-img_url = get_mars_photo('2300')
+img_url = get_mars_photo('4100')
 print(type(img_url))
 #content = '<strong>Check out this Mars pic</strong><br>'f'<img src="{img_url}"></img>')
 
