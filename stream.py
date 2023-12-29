@@ -21,9 +21,9 @@ with st.sidebar:
                          max_value=datetime.datetime.now(), format="YYYY-MM-DD", label_visibility='visible')
 
     st.title('Interested in exploring closer to home?')
-    st.write('Send an email to "mars@calleighwinberg.courses" to receive back a random photo from NASA\'s Mars Curiousity '
-             'Rover. Include a \'sol\' date (0-4000) in the body of your email to receive a photo taken on a specifc Martian '
-             'sol exploring Mars')
+    st.write('Send an email to "mars@calleighwinberg.courses" to receive back a random photo from NASA\'s Mars Curiosity '
+             'Rover. Include a \'sol\' date (0-4000) in the body of your email to receive a photo taken on the specifc Martian '
+             'sol after Curiosity landed.')
 
 with st.container():
     #date = st.date_input('Select a Date', value=datetime.date(2023, 12, 12), min_value=datetime.date(1995, 6, 16),

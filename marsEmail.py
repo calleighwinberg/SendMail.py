@@ -35,10 +35,10 @@ def getPhotoOfDay(date):
 
     return photo, title, explanation
 
-a, b, c = getPhotoOfDay('2023-12-12')
-print(a)
-print(b)
-print(c)
+getPhotoOfDay('2023/12/12')
+#print(a)
+#print(b)
+#print(c)
 
 def getMarsPhoto(sol):
 
@@ -80,6 +80,6 @@ toEmail = "calleighwinberg@gmail.com"
 img_url = getMarsPhoto('1000')
 #content = '<strong>Check out this Mars pic</strong><br>'f'<img src="{img_url}"></img>')
 
-sendEmail(fromEmail, toEmail, img_url)
+#sendEmail(fromEmail, toEmail, img_url)
 
 #making new  change here
