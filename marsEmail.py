@@ -100,11 +100,8 @@ def send_email(fromEmail, toEmail, img_url, sol_day):
 fromEmail = "mars@calleighwinberg.courses"
 toEmail = "calleighwinberg@gmail.com"
 #subject = "Here is your Mars Rover Photo!"
-img_url, sol = get_mars_photo('2344')
+#img_url, sol = get_mars_photo('2344')
 #print(img_url)
 #content = '<strong>Check out this Mars pic</strong><br>'f'<img src="{img_url}"></img>')
 
-send_email(fromEmail, toEmail, img_url, sol)
-
-
-#making new  change here
+#send_email(fromEmail, toEmail, img_url, sol)
