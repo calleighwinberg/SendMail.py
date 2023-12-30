@@ -21,21 +21,13 @@ def email_response():
         img_url, sol_day = get_mars_photo(sol_day)
     except:
         img_url, sol_day = get_mars_photo('1000')
-        #solDay = '1000'
 
-    #img_url = getMarsPhoto(solDay)
 
-    '''try:
-        send_email(to_email, from_email, img_url, sol_day)
-        return '', 200
-    except:
-        return 'error' '''
 
     send_email(to_email, from_email, img_url, sol_day)
 
     #we need to return an empty string with 200 status code because sendgrid has retry logic
     return '', 200
-    #return '', code
 
 if __name__ == '__main__':
     app.run(debug=True)

@@ -1,6 +1,5 @@
 import random
 import requests
-import sendgrid
 from sendgrid import SendGridAPIClient
 from sendgrid.helpers.mail import Mail
 import os
@@ -18,7 +17,6 @@ def get_photo_of_day(date):
 
     params = {'date': date, 'api_key': apiNASA}
     response = requests.get(urlNASAapod, params)
-    #print(response.status_code)
     if (response.status_code != 200):
         print("Error")
         print(response.text)
@@ -32,11 +30,6 @@ def get_photo_of_day(date):
 
     return [photo, title, explanation, media_type]
 
-#lst = get_photo_of_day('2023-12-11')
-#print(len(lst))
-#print(lst[1])
-#print(lst[2])
-#print(lst[3])
 
 def get_mars_photo(sol):
 
@@ -55,7 +48,7 @@ def get_mars_photo(sol):
 
         data = response.json()
         photos = data['photos']
-        #print(photos)
+
         #error checking for the given sol. Sometimes a camera is inactive for a few days so there are no photos.
         if len(photos) == 0:
             sol_int = int(sol)
@@ -64,10 +57,7 @@ def get_mars_photo(sol):
         else:
             sol_picture = True
 
-    #print(photos)
     photoHTML = random.choice(photos)['img_src']
-
-    #print(photoHTML)
 
     return photoHTML, sol
 
@@ -101,9 +91,9 @@ def send_email(fromEmail, toEmail, img_url, sol_day):
 fromEmail = "mars@calleighwinberg.courses"
 toEmail = "calleighwinberg@gmail.com"
 #subject = "Here is your Mars Rover Photo!"
-img_url, sol = get_mars_photo('2344')
-print('img url ', img_url)
+#img_url, sol = get_mars_photo('2344')
+#print('img url ', img_url)
 #print(sol)
 #content = '<strong>Check out this Mars pic</strong><br>'f'<img src="{img_url}"></img>')
 
-send_email(fromEmail, toEmail, img_url, sol)
+#send_email(fromEmail, toEmail, img_url, sol)
