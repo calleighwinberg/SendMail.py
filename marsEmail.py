@@ -78,7 +78,7 @@ this method sends the email
 '''
 def send_email(fromEmail, toEmail, img_url, sol_day):
     mail = Mail(fromEmail, toEmail, subject="Here is your Mars Rover Photo!",
-                html_content='<strong>Check out this Mars picture from Curiosity\'s 'f'{sol_day} exploring Mars. </strong> <br> <img src="{img_url}"></img>')
+                html_content='<strong>Check out this Mars picture from Curiosity\'s 'f'{sol_day} sol exploring Mars. </strong> <br> <img src="{img_url}"></img>')
 
     try:
         # Get a JSON-ready representation of the Mail object
@@ -104,4 +104,4 @@ toEmail = "calleighwinberg@gmail.com"
 #print(img_url)
 #content = '<strong>Check out this Mars pic</strong><br>'f'<img src="{img_url}"></img>')
 
-#send_email(fromEmail, toEmail, img_url, sol)
+#print(send_email(fromEmail, toEmail, img_url, sol))
