@@ -4,11 +4,9 @@ import sendgrid
 from sendgrid.helpers.mail import Mail
 import os
 
-#sg = sendgrid.SendGridAPIClient(os.environ.get('SENDGRID_API_PY'))
-sg = sendgrid.SendGridAPIClient('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')
+sg = sendgrid.SendGridAPIClient(os.environ.get('SENDGRID_API_PY'))
 
-#apiNASA = os.environ.get('NASA_API')
-apiNASA = 'k0y6BcPxBWVadmOUKOdlFYU6vFaNy9rbdGPWPaS0'
+apiNASA = os.environ.get('NASA_API')
 
 urlNASAapod = 'https://api.nasa.gov/planetary/apod'
 
