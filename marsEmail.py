@@ -1,10 +1,11 @@
 import random
 import requests
 import sendgrid
+from sendgrid import SendGridAPIClient
 from sendgrid.helpers.mail import Mail
 import os
 
-sg = sendgrid.SendGridAPIClient(os.environ.get('SENDGRID_API_PY'))
+sg = SendGridAPIClient(os.environ.get('SENDGRID_API_PYTHON'))
 
 apiNASA = os.environ.get('NASA_API')
 
@@ -81,9 +82,11 @@ def send_email(fromEmail, toEmail, img_url, sol_day):
     try:
         # Get a JSON-ready representation of the Mail object
         mailJSON = mail.get()
-
+        print(mailJSON)
+        print(sg.client.mail.send.post(request_body=mailJSON))
         # Send an HTTP POST request to mail.send.post
         response = sg.client.mail.send.post(request_body=mailJSON)
+        print(response)
         print(response.status_code)
         print(response.headers)
         return response.status_code
@@ -98,8 +101,9 @@ def send_email(fromEmail, toEmail, img_url, sol_day):
 fromEmail = "mars@calleighwinberg.courses"
 toEmail = "calleighwinberg@gmail.com"
 #subject = "Here is your Mars Rover Photo!"
-#img_url, sol = get_mars_photo('2344')
-#print(img_url)
+img_url, sol = get_mars_photo('2344')
+print('img url ', img_url)
+#print(sol)
 #content = '<strong>Check out this Mars pic</strong><br>'f'<img src="{img_url}"></img>')
 
-#print(send_email(fromEmail, toEmail, img_url, sol))
+send_email(fromEmail, toEmail, img_url, sol)
