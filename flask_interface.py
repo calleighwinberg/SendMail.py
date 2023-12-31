@@ -1,6 +1,6 @@
 from flask import Flask, request
 import re
-from marsEmail import get_mars_photo, send_email
+from mars_email import get_mars_photo, send_email
 
 #create flask app object
 app = Flask(__name__)

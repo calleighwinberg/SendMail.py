@@ -2,7 +2,7 @@ import datetime
 
 import streamlit as st
 
-from marsEmail import *
+from mars_email import *
 
 st.set_page_config(layout="wide")
 

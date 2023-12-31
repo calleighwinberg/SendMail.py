@@ -1,6 +1,6 @@
 import unittest
 
-from marsEmail import *
+from mars_email import *
 class MyTestCase(unittest.TestCase):
     def test_get_photo_of_day(self):
 
