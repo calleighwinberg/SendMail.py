@@ -12,10 +12,17 @@ urlNASAapod = 'https://api.nasa.gov/planetary/apod'
 
 urlNASA = 'https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos'
 
-
+'''
+This function takes in a date as a string and returns NASA photo of the day for that date.
+Sends a request to the APOD NASA api with my api key and the date as parameters. There is error catching 
+logic to catch sol days that are out of bounds.
+:param sol: string for requested date
+:return: The date, photo http, photo title, photo description, and media tpye (not always a photo)
+'''
 def get_photo_of_day(date):
 
     params = {'date': date, 'api_key': apiNASA}
+    #send a GET request to the nasa apod url with given params
     response = requests.get(urlNASAapod, params)
     if (response.status_code != 200):
         print("Error")
@@ -31,6 +38,13 @@ def get_photo_of_day(date):
     return [photo, title, explanation, media_type]
 
 
+'''
+This function takes in a mars sol day as a string and return a random photo taken by the mars rover on that sol.
+Sends a request to the mars rover NASA api with my api key and the sol date as parameters. There is error catching 
+logic to catch sol days that are out of bounds.
+:param sol: string for the sol day that 
+:return: The sol day used and the http string for the photo
+'''
 def get_mars_photo(sol):
 
     sol_int = int(sol)
@@ -41,6 +55,7 @@ def get_mars_photo(sol):
 
     while not sol_picture:
         params = {'sol': sol, 'api_key': apiNASA}
+        # send a GET request to the nasa mars rover url with given params
         response = requests.get(urlNASA, params)
         if (response.status_code != 200):
             print("Error")
@@ -63,37 +78,31 @@ def get_mars_photo(sol):
 
 
 '''
-this method sends the email
+This function takes in email parameters and makes use of sendgrid's Mail class to send an email with the given data.
+Using my personal sendgrid api to make a post request that sends an email
+:param sol: from_email, to_email, img_url, sol_day will be received from flask file
+:return: status code or error
 '''
-def send_email(fromEmail, toEmail, img_url, sol_day):
-    mail = Mail(fromEmail, toEmail, subject="Here is your Mars Rover Photo!",
+def send_email(from_email, to_email, img_url, sol_day):
+    mail = Mail(from_email, to_email, subject="Here is your Mars Rover Photo!",
                 html_content='<strong>Check out this Mars picture from Curiosity\'s 'f'{sol_day} sol exploring Mars. </strong> <br> <img src="{img_url}"></img>')
 
     try:
         # Get a JSON-ready representation of the Mail object
         mailJSON = mail.get()
-        print(mailJSON)
-        print(sg.client.mail.send.post(request_body=mailJSON))
         # Send an HTTP POST request to mail.send.post
         response = sg.client.mail.send.post(request_body=mailJSON)
-        print(response)
         print(response.status_code)
         print(response.headers)
         return response.status_code
 
     except Exception:
-        #print(response.status_code)
         return 'error'
 
 
 
-#these are the params that can be changed. Maybe put in a different file
-fromEmail = "mars@calleighwinberg.courses"
-toEmail = "calleighwinberg@gmail.com"
-#subject = "Here is your Mars Rover Photo!"
-#img_url, sol = get_mars_photo('2344')
-#print('img url ', img_url)
-#print(sol)
-#content = '<strong>Check out this Mars pic</strong><br>'f'<img src="{img_url}"></img>')
-
+#testing params
+#fromEmail = "mars@calleighwinberg.courses"
+#toEmail = "calleighwinberg@gmail.com"
+#img_url, sol = get_mars_photo('4001')
 #send_email(fromEmail, toEmail, img_url, sol)

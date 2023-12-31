@@ -14,15 +14,13 @@ def email_response():
     from_email = request.form['from']
     email_content = request.form['text']
 
-    #error checking will grab the first occurence of a number in the users email. If the number is above 4000, interface
-    #will use 1000 instead. Sol days are limited above 4000
+    #error checking will grab the first occurence of a number in the users email. If there is no number,
+    #default to 1000
     try:
         sol_day = re.search('\d+', email_content).group()
         img_url, sol_day = get_mars_photo(sol_day)
     except:
         img_url, sol_day = get_mars_photo('1000')
-
-
 
     send_email(to_email, from_email, img_url, sol_day)
 

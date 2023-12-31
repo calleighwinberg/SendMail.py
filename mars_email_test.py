@@ -19,20 +19,28 @@ class MyTestCase(unittest.TestCase):
     def test_get_mars_photo(self):
 
         #test that a valid sol day returns a url containing the call for that sol
-        self.assertTrue('http://mars.jpl.nasa.gov/msl-raw-images/proj/msl/redops/ods/surface/sol/02300/'
-                        in get_mars_photo('2300'))
+        http, sol = get_mars_photo('2300')
+        self.assertTrue('/02300/' in http)
+
+        #'http://mars.jpl.nasa.gov/msl-raw-images/msss/02300'
 
         #test that the url generated when given a sol that has no photos will generate a url for a picture from
         #the next sol day that has available photos
         #2344 is a sol when there were no pictures. The next sol that has pictures in 2346
+        http2, sol2 = get_mars_photo('2344')
         self.assertTrue('http://mars.jpl.nasa.gov/msl-raw-images/proj/msl/redops/ods/surface/sol/02346/'
-                        in get_mars_photo('2344'))
+                        in http2)
+        http3, sol3 = get_mars_photo('2345')
         self.assertTrue('http://mars.jpl.nasa.gov/msl-raw-images/proj/msl/redops/ods/surface/sol/02346/'
-                        in get_mars_photo('2345'))
+                        in http3)
 
         #test that entering any number greater than 4000 will always return a url for a photo from sol day 1000
-        self.assertTrue('http://mars.jpl.nasa.gov/msl-raw-images/msss/01000/' in get_mars_photo('4001'))
-        self.assertTrue('http://mars.jpl.nasa.gov/msl-raw-images/msss/01000/' in get_mars_photo('100001'))
+        http4, sol4 = get_mars_photo('4001')
+        self.assertTrue('http://mars.jpl.nasa.gov/msl-raw-images/msss/01000/' in http4)
+        self.assertEqual(sol4, '1000')
+        http5, sol5 = get_mars_photo('100001')
+        self.assertEqual(sol5, '1000')
+        self.assertTrue('http://mars.jpl.nasa.gov/msl-raw-images/msss/01000/' in http5)
 
 
     def test_send_email(self):
