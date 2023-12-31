@@ -14,8 +14,8 @@ urlNASA = 'https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos'
 
 '''
 This function takes in a date as a string and returns NASA photo of the day for that date.
-Sends a request to the APOD NASA api with my api key and the date as parameters. There is error catching 
-logic to catch sol days that are out of bounds.
+Uses requests to send a request to the APOD NASA api with my api key and the date as parameters. 
+There is error catching logic to catch sol days that are out of bounds. 
 :param sol: string for requested date
 :return: The date, photo http, photo title, photo description, and media tpye (not always a photo)
 '''
