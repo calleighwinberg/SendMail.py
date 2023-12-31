@@ -3,12 +3,13 @@
 This application aims to streamline space exploration and education by providing a user-friendly platform to explore NASA's public APIs. Users can search for a specifc NASA
 Picture Of The Day or request a random Mars photo from NASA's largest and most capable Mars rover, Curiosity. 
 
+<img width="945" alt="Screenshot 2023-12-30 at 7 20 48 PM" src="https://github.com/calleighwinberg/SendMail.py/assets/149536156/670f3472-c35d-44ef-b4f5-c4dd1590cbe0">
+
+
 ## Description
 
 NASA has been producing their Astronomy picture of the day since June 16, 1995. NASA's official picture of the day website can be found at https://apod.nasa.gov/apod/astropix.html. 
-This application aims to build an alternative resource that allows users to to choose a particular date and display the corresponding photo or video from NASA's picture of the day API.
-The app also taps into NASA's extensive collection of Mars Rover images by allowing users to receive emailed mars photos at random. When a user sends an email to 'mars@calleighwinberg@courses.com,
-they receive a randomly chosen photo that offers a fresh perspective and diverse glimpse into the Martian landscape. 
+This application aims to build an alternative resource that allows users to to choose a particular date and display the corresponding photo or video from NASA's picture of the day API. The app also taps into NASA's extensive collection of Mars Rover images by allowing users to receive emailed mars photos at random. When a user sends an email to 'mars@calleighwinberg@courses.com', they receive a randomly chosen photo that offers a fresh perspective and diverse glimpse into the Martian landscape. 
 
 ## Getting Started
 
@@ -64,7 +65,9 @@ ngrok http 5000
 ```
 4. Now that you have a publicly accessible URL, configure the Sendgrid Inbound Parse webhook in your SendGrid dashboard. This is where need a domain name that can recieve emails.
 5. Enter the ngrok generated pulic URL with '/email' at the end.
-6. You can now send emails. 
+6. You can now send emails.
+
+<img width="445" alt="Screenshot 2023-12-30 at 7 20 48 PM" src="https://github.com/calleighwinberg/SendMail.py/assets/149536156/c56745a8-de91-49ad-a336-101933635af6">
 
 Steps for executing Streamlit app.
 1. To deploy your streamlit app for production, follow instructions here - https://docs.streamlit.io/streamlit-community-cloud/get-started. 
