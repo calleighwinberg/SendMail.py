@@ -55,11 +55,11 @@ This application aims to build an alternative resource that allows users to to c
 ### Executing program
 
 Steps for sending and receiving Mars photos
-1. Run mars_email.py in the terminal
+1. Run flask_interface.py in the terminal
 ```
-python mars_interface.py
+python flask_interface.py
 ```
-3. With the mars_interface.py file running, open the ngrok tunnel in a seperate terminal.
+3. With the flask_interface.py file running, open the ngrok tunnel in a seperate terminal.
 ```
 ngrok http 5000
 ```
