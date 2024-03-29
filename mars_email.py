@@ -102,7 +102,8 @@ def send_email(from_email, to_email, img_url, sol_day):
 
 
 #testing params
-#fromEmail = "mars@calleighwinberg.courses"
-#toEmail = "calleighwinberg@gmail.com"
-#img_url, sol = get_mars_photo('4001')
+fromEmail = "mars@calleighwinberg.courses"
+#toEmail = "calleigh@seas.upenn.edu"
+toEmail = "calleighlife@gmail.com"
+img_url, sol = get_mars_photo('4001')
 #send_email(fromEmail, toEmail, img_url, sol)
