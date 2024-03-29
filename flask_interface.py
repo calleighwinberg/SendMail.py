@@ -1,3 +1,5 @@
+import os
+
 from flask import Flask, request
 import re
 from mars_email import get_mars_photo, send_email
@@ -28,7 +30,7 @@ def email_response():
     return '', 200
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000)
+    app.run(host='0.0.0.0', port= os.environ.get('PORT'))
 
 '''if __name__ == '__main__':
     app.run(debug=True)'''
