@@ -29,8 +29,8 @@ def email_response():
     #we need to return an empty string with 200 status code because sendgrid has retry logic
     return '', 200
 
-if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=os.environ.get('PORT'))
-
 '''if __name__ == '__main__':
-    app.run(debug=True)'''
+    app.run(host='0.0.0.0', port=os.environ.get('PORT'))'''
+
+if __name__ == '__main__':
+    app.run()
