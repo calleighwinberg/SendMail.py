@@ -57,9 +57,9 @@ This application aims to build an alternative resource that allows users to to c
 Steps for sending and receiving Mars photos
 1. Run mars_email.py in the terminal
 ```
-python mars_email.py
+python mars_interface.py
 ```
-3. With the mars_email.py file running, open the ngrok tunnel in a seperate terminal.
+3. With the mars_interface.py file running, open the ngrok tunnel in a seperate terminal.
 ```
 ngrok http 5000
 ```
