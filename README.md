@@ -60,13 +60,13 @@ This application aims to build an alternative resource that allows users to to c
 
 ### Executing program
 
-Steps for sending and receiving Mars photos
+Steps for sending and receiving Mars photos using ngrok
 1. To test your app before deployment, run your flask_interface.py in the terminal. With the flask_interface.py file running, open the ngrok tunnel in a seperate terminal.
 ```
 ngrok http 5000
 ```
-4. Now that you have a publicly accessible URL, configure the Sendgrid Inbound Parse webhook in your SendGrid dashboard. This is where need a domain name that can recieve emails.
-5. Enter the ngrok generated pulic URL with '/email' at the end.
+2. Now that you have a publicly accessible URL, configure the Sendgrid Inbound Parse webhook in your SendGrid dashboard. This is where need a domain name that can recieve emails.
+3. Enter the ngrok generated pulic URL with '/email' at the end.
 
 Steps for deploying your app to send and receive Mars photos
 1. Follow the steps to successfully deploy the app on render - https://docs.render.com/deploy-flask
