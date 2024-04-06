@@ -1,6 +1,6 @@
 # Exploring Space Using NASA APIs
 
-This application aims to streamline space exploration and education by providing a user-friendly platform to explore NASA's public APIs. Users can search for a specifc NASA
+This application aims to streamline space exploration and education by providing a user-friendly platform to explore NASA's public APIs. Users can search for a specific NASA
 Picture Of The Day or request a random Mars photo from NASA's largest and most capable Mars rover, Curiosity. 
 
 <img width="945" alt="Screenshot 2023-12-30 at 7 20 48 PM" src="https://github.com/calleighwinberg/SendMail.py/assets/149536156/670f3472-c35d-44ef-b4f5-c4dd1590cbe0">
