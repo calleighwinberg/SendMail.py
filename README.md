@@ -13,9 +13,11 @@ This application aims to build an alternative resource that allows users to to c
 
 ## Getting Started
 
-### Tech Stack
+### Built with
 * Python
 * Flask
+* Streamlit
+* Render deployment
 
 ### Dependencies
 
@@ -23,7 +25,7 @@ This application aims to build an alternative resource that allows users to to c
 * Flask as a webframe for receiving HTTP requests.
 * A free sendgrid account.
 * A domain in which you can receive emails.
-* ngrok to create a public URL that SendGrid can forward requests to.
+* Ngrok for testing 
 * Streamlit to create and deploy your applciation UI.
 
 ### Installing
@@ -40,32 +42,36 @@ This application aims to build an alternative resource that allows users to to c
   ```
  pip install Flask
  ```
-4. Install ngrok in your virtual environment.
-  ```
- brew install ngrok/ngrok/ngrok
- ```
-5. Install streamlit in your virtual environment.
+4. Install streamlit in your virtual environment.
   ```
  pip install streamlit
  ```
-6. After creating your sendgrid account, create a sendgrid API key and save it in a environment variable named "SENDGRID_API_PYTHON"
-7. Generate a free NASA API key here - https://api.nasa.gov/. Save your API key in an environment variable named "NASA_API"
+5. Install ngrok in your virtual environment.
+  ```
+ brew install ngrok/ngrok/ngrok
+ ```
+6. Install guinicorn in your virtual environment.
+  ```
+ pip install gunicorn
+ ```
+7. After creating your sendgrid account, create a sendgrid API key and save it in a environment variable named "SENDGRID_API_PYTHON"
+8. Generate a free NASA API key here - https://api.nasa.gov/. Save your API key in an environment variable named "NASA_API"
 
 
 ### Executing program
 
 Steps for sending and receiving Mars photos
-1. Run flask_interface.py in the terminal
-```
-python flask_interface.py
-```
-3. With the flask_interface.py file running, open the ngrok tunnel in a seperate terminal.
+1. To test your app before deployment, run your flask_interface.py in the terminal. With the flask_interface.py file running, open the ngrok tunnel in a seperate terminal.
 ```
 ngrok http 5000
 ```
 4. Now that you have a publicly accessible URL, configure the Sendgrid Inbound Parse webhook in your SendGrid dashboard. This is where need a domain name that can recieve emails.
 5. Enter the ngrok generated pulic URL with '/email' at the end.
-6. You can now send emails.
+
+Steps for deploying your app to send and receive Mars photos
+1. Follow the steps to successfully deploy the app on render - https://docs.render.com/deploy-flask
+2. Follow the same process above to configure the Sendgrid Inbound Parse webhook in your SendGrid dashboard.
+3. You can now send emails.
 
 <img width="445" alt="Screenshot 2023-12-30 at 7 20 48 PM" src="https://github.com/calleighwinberg/SendMail.py/assets/149536156/c56745a8-de91-49ad-a336-101933635af6">
 
